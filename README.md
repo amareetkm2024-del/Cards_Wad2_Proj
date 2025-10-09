@@ -1,0 +1,3 @@
+- Creating a 3 grid card layout
+- With pet database stored (manually)
+- Calling API to fetch image 

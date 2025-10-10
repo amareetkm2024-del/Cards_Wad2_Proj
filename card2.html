@@ -8,15 +8,16 @@
     .card-img-top {
       width: 100%;
       aspect-ratio: 1 / 1;
+      /* fit the image properly according to the cards */
       object-fit: cover;
     }
 
 
-    .btn {
-      background-color: rgb(255, 115, 0) !important;
+     .btn {
+      background-color: rgb(236, 130, 0) !important;
       width: 100%;
       color: white !important;
-    }
+    } 
 
     .btn:hover {
       background-color: rgb(209, 115, 0) !important;
@@ -32,9 +33,9 @@
 
 <body class="bg-light">
 
-  <div class="container">
+  <div class="container px-5">
     <h1>Pet List</h1>
-    <div id="petCards" class="row"></div>
+    <div id="petCards" class="row g-3"></div>
   </div>
 
   <script src="mock_pets.js"></script>

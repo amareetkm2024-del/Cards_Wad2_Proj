@@ -1,4 +1,3 @@
-// mockPets.js
 
 const pets = [
   {
@@ -10,7 +9,7 @@ const pets = [
     gender: "Female",
     temperament: "Friendly, Gentle, Loyal",
     maintenanceLevel: "Medium",
-    image: "",      // missing image here to use api to replace picture
+    image: "",        // use api to replace picture
     adoptionAgency: "Happy Tails Shelter",
     description: "A sweet and affectionate retriever that loves playing fetch and being around people."
   },
@@ -51,7 +50,7 @@ const pets = [
     gender: "Female",
     temperament: "Intelligent, Energetic, Playful",
     maintenanceLevel: "High",
-    image: "",          // missing image here to use api to replace picture
+    image: "",           // use api to replace picture
     adoptionAgency: "Pet Haven",
     description: "An active and smart poodle who enjoys walks and mental challenges."
   },
@@ -104,7 +103,7 @@ const pets = [
     gender: "Male",
     temperament: "Energetic, Curious, Friendly",
     maintenanceLevel: "Medium",
-    image: "",   // missing image here to use api to replace picture
+    image: "",     // use api to replace picture
     adoptionAgency: "City Paws Shelter",
     description: "A cheerful and curious Beagle who loves walks and exploring scents."
   },
@@ -126,8 +125,3 @@ const pets = [
 
 ];
 
-// Export if you’re using modules
-// export default pets;
-
-// OR just use in your HTML
-// <script src="mockPets.js"></script>

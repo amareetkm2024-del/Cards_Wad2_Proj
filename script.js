@@ -71,6 +71,7 @@ async function displayPets() {
           <div class="card-body">
             <h5 class="card-title">${pet.name}</h5>
             <p class="card-text">${pet.species} - ${pet.breed}</p>
+            <button class="btn">View More</button>
           </div>
         </div>
       </div>

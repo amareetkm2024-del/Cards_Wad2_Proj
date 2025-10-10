@@ -2,7 +2,7 @@ const container = document.getElementById("petCards");
 const API_KEY = "live_m9FVcETQaok0LTSqCHAJrMMvkhBAIF2PfmvUMfwKq7n3zQIcDuHndLIerVPtmKEH";
 let allBreeds = [];
 
-//load the list of breeds from the API key for dogs
+// Load all dog breeds
 async function loadAllBreeds() {
   try {
     const response = await axios.get("https://api.thedogapi.com/v1/breeds", {
@@ -14,10 +14,9 @@ async function loadAllBreeds() {
   }
 }
 
-// Step 2: Get image by breed name
+// Get dog image by breed name
 async function getDogImageByBreedName(breedName) {
   try {
-    // Find breed by name
     const breed = allBreeds.find(
       b => b.name.toLowerCase() === breedName.toLowerCase()
     );
@@ -27,7 +26,6 @@ async function getDogImageByBreedName(breedName) {
       return "https://via.placeholder.com/300x200?text=Breed+Not+Found";
     }
 
-    // Fetch an image using the breed_id
     const response = await axios.get(
       `https://api.thedogapi.com/v1/images/search?breed_id=${breed.id}`,
       { headers: { "x-api-key": API_KEY } }
@@ -44,9 +42,9 @@ async function getDogImageByBreedName(breedName) {
   }
 }
 
-// Step 3: Display pet cards
+// Display pet cards dynamically
 async function displayPets() {
-  await loadAllBreeds(); // ensure breeds are loaded before searching
+  await loadAllBreeds(); // ensure breeds are loaded
 
   const petPromises = pets.map(async pet => {
     let imgURL = pet.image;
@@ -62,21 +60,56 @@ async function displayPets() {
 
   const petData = await Promise.all(petPromises);
 
-  container.innerHTML = ""; // clear container before adding
+  // Clear container
+  container.textContent = "";
+
   petData.forEach(pet => {
-    container.innerHTML += `
-      <div class="col-md-4 mb-3">
-        <div class="card shadow-sm">
-          <img src="${pet.image}" class="card-img-top" alt="${pet.name}">
-          <div class="card-body">
-            <h5 class="card-title">${pet.name}</h5>
-            <p class="card-text">${pet.species} - ${pet.breed}</p>
-            <button class="btn">View More</button>
-          </div>
-        </div>
-      </div>
-    `;
+    // Column
+    const col = document.createElement("div");
+    col.classList.add("col-md-4", "mb-3");
+
+    // Card
+    const card = document.createElement("div");
+    card.classList.add("card", "shadow-sm");
+
+    // Image
+    const img = document.createElement("img");
+    img.src = pet.image;
+    img.alt = pet.name;
+    img.classList.add("card-img-top");
+
+    // Card body
+    const cardBody = document.createElement("div");
+    cardBody.classList.add("card-body", "d-flex", "flex-column");
+
+    // Title
+    const title = document.createElement("h5");
+    title.classList.add("card-title");
+    title.textContent = pet.name;
+
+    // Text
+    const text = document.createElement("p");
+    text.classList.add("card-text");
+    text.textContent = `${pet.species} - ${pet.breed}`;
+
+    // View More button
+    const button = document.createElement("button");
+    button.classList.add("btn", "btn-orange", "mt-auto");
+    button.textContent = "View More";
+
+    // Append
+    cardBody.appendChild(title);
+    cardBody.appendChild(text);
+    cardBody.appendChild(button);
+
+    card.appendChild(img);
+    card.appendChild(cardBody);
+
+    col.appendChild(card);
+
+    container.appendChild(col);
   });
 }
 
+// Call the function
 displayPets();

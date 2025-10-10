@@ -42,24 +42,6 @@ async function getDogImageByBreedName(breedName) {
   }
 }
 
-// // Get rabbit image by breed name
-// async function getRabbitImageByBreedName(breedName) {
-//   try {
-//     const response = await axios.get(
-//       `https://rabbit-api-two.vercel.app/api/breeds/${encodeURIComponent(breedName)}`
-//     );
-
-//     if (response.data && response.data.image) {
-//       return response.data.image;
-//     } else {
-//       return "https://via.placeholder.com/300x200?text=No+Image";
-//     }
-//   } catch (error) {
-//     console.error(`Error fetching rabbit image for ${breedName}:`, error);
-//     return "https://via.placeholder.com/300x200?text=Image+Error";
-//   }
-// }
-
 
 // Displaying Pet Cards 
 async function displayPets() {
@@ -70,10 +52,9 @@ async function displayPets() {
 
     if (!imgURL) {
       if (pet.species.toLowerCase() === "dog") {
-        imgURL = await getDogImageByBreedName(pet.breed);
-      } else if (pet.species.toLowerCase() === "rabbit") {
-        imgURL = await getRabbitImageByBreedName(pet.breed);
-      } else {
+        imgURL = await getDogImageByBreedName(pet.breed); 
+      }
+       else {
         imgURL = "https://via.placeholder.com/300x200?text=No+Image";
       }
     }

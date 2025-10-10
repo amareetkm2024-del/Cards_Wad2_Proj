@@ -87,7 +87,7 @@ async function displayPets() {
   container.textContent = "";
 
   petData.forEach(pet => {
- 
+
     const col = document.createElement("div");
     col.classList.add("col-md-4", "mb-3");
 
@@ -108,7 +108,7 @@ async function displayPets() {
     // Pet Name 
     const title = document.createElement("h5");
     title.classList.add("card-title");
-    title.textContent = pet.name;
+    title.textContent = `${pet.name}, ${pet.age} year${pet.age > 1 ? 's' : ''}`;
 
     // Breed
     const text = document.createElement("p");
@@ -122,8 +122,12 @@ async function displayPets() {
 
     //Button to allow users to view more
     const button = document.createElement("button");
-    button.classList.add("btn", "btn-orange", "mt-auto");
+    button.classList.add("btn", "btn-orange", "fw-bold", "mt-auto");
     button.textContent = "View More";
+
+    // const button = document.createElement("button");
+    // button.classList.add("btn", "btn-warning");
+    // button.textContent = "View More";
 
     cardBody.appendChild(title);
     cardBody.appendChild(text);

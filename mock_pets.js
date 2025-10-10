@@ -53,7 +53,7 @@ const pets = [
     adoptionAgency: "Whisker World",
     description: "A curious and loving Siamese cat that enjoys human interaction."
   },
-  
+
   {
     id: 5,
     name: "Rocky",
@@ -92,7 +92,23 @@ const pets = [
     image: "",   // missing image here to use api to replace pictire
     adoptionAgency: "City Paws Shelter",
     description: "A cheerful and curious Beagle who loves walks and exploring scents."
+  },
+
+
+  {
+    id: 8,
+    name: "Bunni",
+    species: "Rabbit",
+    breed: "Californian",
+    age: 1,
+    gender: "Female",
+    temperament: "Energetic, Curious, Friendly",
+    maintenanceLevel: "Medium",
+    image: "",   // missing image here to use api to replace pictire
+    adoptionAgency: "Rabbit Shelter",
+    description: "A cheerful and curious Bunny who loves to eat."
   }
+
 ];
 
 // Export if you’re using modules

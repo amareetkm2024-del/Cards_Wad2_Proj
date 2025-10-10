@@ -38,7 +38,7 @@ const pets = [
     maintenanceLevel: "Medium",
     image: "https://images.unsplash.com/photo-1589130674510-6dadfc8a1266?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     adoptionAgency: "Rabbit Shelter",
-    description: "A mischevious and energetic hamster that loves to run."
+    description: "A mischevious and energetic hamster that loves to run on the hamster wheel."
   }, 
 
   {

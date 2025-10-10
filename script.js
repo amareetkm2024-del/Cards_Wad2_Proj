@@ -42,6 +42,25 @@ async function getDogImageByBreedName(breedName) {
   }
 }
 
+// // Get rabbit image by breed name
+// async function getRabbitImageByBreedName(breedName) {
+//   try {
+//     const response = await axios.get(
+//       `https://rabbit-api-two.vercel.app/api/breeds/${encodeURIComponent(breedName)}`
+//     );
+
+//     if (response.data && response.data.image) {
+//       return response.data.image;
+//     } else {
+//       return "https://via.placeholder.com/300x200?text=No+Image";
+//     }
+//   } catch (error) {
+//     console.error(`Error fetching rabbit image for ${breedName}:`, error);
+//     return "https://via.placeholder.com/300x200?text=Image+Error";
+//   }
+// }
+
+
 // Display pet cards dynamically
 async function displayPets() {
   await loadAllBreeds(); // ensure breeds are loaded
@@ -49,10 +68,14 @@ async function displayPets() {
   const petPromises = pets.map(async pet => {
     let imgURL = pet.image;
 
-    if (!imgURL && pet.species.toLowerCase() === "dog") {
-      imgURL = await getDogImageByBreedName(pet.breed);
-    } else if (!imgURL) {
-      imgURL = "https://via.placeholder.com/300x200?text=No+Image";
+    if (!imgURL) {
+      if (pet.species.toLowerCase() === "dog") {
+        imgURL = await getDogImageByBreedName(pet.breed);
+      } else if (pet.species.toLowerCase() === "rabbit") {
+        imgURL = await getRabbitImageByBreedName(pet.breed);
+      } else {
+        imgURL = "https://via.placeholder.com/300x200?text=No+Image";
+      }
     }
 
     return { ...pet, image: imgURL };
@@ -87,19 +110,25 @@ async function displayPets() {
     title.classList.add("card-title");
     title.textContent = pet.name;
 
-    // Text
+    // Breed
     const text = document.createElement("p");
     text.classList.add("card-text");
-    text.textContent = `${pet.species} - ${pet.breed}`;
+    text.textContent = `${pet.breed}`;
+
+    // Description
+    const description = document.createElement("p");
+    description.classList.add("card-text");
+    description.textContent = `${pet.description}`;
 
     // View More button
     const button = document.createElement("button");
     button.classList.add("btn", "btn-orange", "mt-auto");
     button.textContent = "View More";
 
-    // Append
+    // Append elements
     cardBody.appendChild(title);
     cardBody.appendChild(text);
+    cardBody.appendChild(description);
     cardBody.appendChild(button);
 
     card.appendChild(img);

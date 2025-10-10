@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Listing</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+        .btn {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- padding top and bottom -->
+    <div class="container py-5">
+        <h1 class="text-center mb-4">Pet Listing</h1>
+        <!-- one col per row for smaller screens and 3 col per row for medium screen-->
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            <!-- card 1 -->
+            <div class="col">
+                <div class="card shadow-sm">
+                    <!-- card header -->
+                    <img src="./img/cat1.jpg" class="card-img-top" alt="img1">
+                    <div class="card-body">
+                        <h5 class="card-title">Fluffy</h5>
+                        <p class="card-text">
+                            1 Year old<br>
+                            Tabby<br>
+                            Loves to take nap and cuddle with people<br>
+                        </p>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" class="btn btn-primary btn-lg">View More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@ const container = document.getElementById("petCards");
 const API_KEY = "live_m9FVcETQaok0LTSqCHAJrMMvkhBAIF2PfmvUMfwKq7n3zQIcDuHndLIerVPtmKEH";
 let allBreeds = [];
 
-// Load all dog breeds
+// Load all the dog breeds
 async function loadAllBreeds() {
   try {
     const response = await axios.get("https://api.thedogapi.com/v1/breeds", {
@@ -14,7 +14,7 @@ async function loadAllBreeds() {
   }
 }
 
-// Get dog image by breed name
+// get the right dog image according to their breed 
 async function getDogImageByBreedName(breedName) {
   try {
     const breed = allBreeds.find(
@@ -61,7 +61,7 @@ async function getDogImageByBreedName(breedName) {
 // }
 
 
-// Display pet cards dynamically
+// Displaying Pet Cards 
 async function displayPets() {
   await loadAllBreeds(); // ensure breeds are loaded
 
@@ -83,11 +83,11 @@ async function displayPets() {
 
   const petData = await Promise.all(petPromises);
 
-  // Clear container
+  // clear container 
   container.textContent = "";
 
   petData.forEach(pet => {
-    // Column
+ 
     const col = document.createElement("div");
     col.classList.add("col-md-4", "mb-3");
 
@@ -105,7 +105,7 @@ async function displayPets() {
     const cardBody = document.createElement("div");
     cardBody.classList.add("card-body", "d-flex", "flex-column");
 
-    // Title
+    // Pet Name 
     const title = document.createElement("h5");
     title.classList.add("card-title");
     title.textContent = pet.name;
@@ -115,17 +115,16 @@ async function displayPets() {
     text.classList.add("card-text");
     text.textContent = `${pet.breed}`;
 
-    // Description
+    // Pet Description
     const description = document.createElement("p");
     description.classList.add("card-text");
     description.textContent = `${pet.description}`;
 
-    // View More button
+    //Button to allow users to view more
     const button = document.createElement("button");
     button.classList.add("btn", "btn-orange", "mt-auto");
     button.textContent = "View More";
 
-    // Append elements
     cardBody.appendChild(title);
     cardBody.appendChild(text);
     cardBody.appendChild(description);
@@ -140,5 +139,4 @@ async function displayPets() {
   });
 }
 
-// Call the function
 displayPets();
